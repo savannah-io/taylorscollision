@@ -10,10 +10,29 @@ import {
   SwatchIcon,
   ExclamationTriangleIcon,
   WrenchIcon,
-  BeakerIcon
+  BeakerIcon,
+  CheckIcon,
+  ArrowRightIcon
 } from '@heroicons/react/24/outline'
+import { useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 export default function Services() {
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    // Handle scroll to section if hash is present
+    const section = searchParams.get('section')
+    if (section) {
+      const element = document.getElementById(section)
+      if (element) {
+        const yOffset = -100 // Account for fixed header
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+    }
+  }, [searchParams])
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -29,72 +48,75 @@ export default function Services() {
     show: { opacity: 1, y: 0 }
   }
 
-  const services = [
+  const mainServices = [
     {
+      id: "collision-repair",
       icon: <ExclamationTriangleIcon className="w-8 h-8" />,
       title: "Collision Repair",
       description: "Expert repair of vehicle damage from accidents, restoring your car to pre-accident condition with precision and care.",
       features: [
-        "Frame straightening",
-        "Panel repair and replacement",
-        "Structural repairs",
-        "Post-repair safety inspections"
-      ]
+        "Frame straightening with computerized measuring system",
+        "Expert panel repair and replacement",
+        "Structural repairs with factory specifications",
+        "Post-repair safety inspections and quality checks",
+        "Insurance claim assistance and documentation",
+        "Lifetime warranty on repairs"
+      ],
+      process: [
+        "Initial damage assessment and documentation",
+        "Detailed repair plan development",
+        "Structural repairs and frame straightening",
+        "Panel repair or replacement",
+        "Paint matching and refinishing",
+        "Quality control inspection"
+      ],
+      image: "/images/back1.png"
     },
     {
+      id: "paint-services",
       icon: <PaintBrushIcon className="w-8 h-8" />,
       title: "Paint Services",
-      description: "Professional auto painting with color matching technology for a flawless finish that looks factory-new.",
+      description: "Professional auto painting with state-of-the-art color matching technology for a flawless factory-quality finish.",
       features: [
-        "Computerized color matching",
-        "Full vehicle painting",
+        "Computerized color matching system",
+        "Premium quality paint materials",
+        "Expert surface preparation",
+        "Clear coat protection",
         "Spot repair and blending",
-        "Clear coat protection"
-      ]
+        "Environmental-friendly practices"
+      ],
+      process: [
+        "Color analysis and matching",
+        "Surface preparation and cleaning",
+        "Primer application",
+        "Base coat application",
+        "Clear coat finishing",
+        "Quality inspection and buffing"
+      ],
+      image: "/images/services/paint-services.jpg"
     },
     {
-      icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+      id: "dent-removal",
+      icon: <WrenchScrewdriverIcon className="w-8 w-8" />,
       title: "Dent Removal",
       description: "Skilled dent removal services using paintless dent repair techniques when possible to maintain your vehicle's original finish.",
       features: [
-        "Paintless dent repair",
+        "Paintless dent repair (PDR)",
+        "Door ding and minor dent fixes",
         "Hail damage repair",
-        "Door ding removal",
-        "Minor collision dent repair"
-      ]
-    },
-    {
-      icon: <SwatchIcon className="w-8 h-8" />,
-      title: "Paint Protection",
-      description: "Advanced paint protection solutions to keep your vehicle looking new and protected from environmental damage.",
-      features: [
-        "Ceramic coating",
-        "Paint protection film",
-        "Rust protection",
-        "UV damage prevention"
-      ]
-    },
-    {
-      icon: <WrenchIcon className="w-8 h-8" />,
-      title: "Frame & Structural",
-      description: "Precise frame and structural repairs using advanced measuring and straightening equipment.",
-      features: [
-        "Laser frame measuring",
-        "Unibody repair",
-        "Frame straightening",
-        "Structural welding"
-      ]
-    },
-    {
-      icon: <BeakerIcon className="w-8 h-8" />,
-      title: "Auto Detailing",
-      description: "Comprehensive detailing services to restore and maintain your vehicle's appearance inside and out.",
-      features: [
-        "Interior deep cleaning",
-        "Paint correction",
-        "Ceramic coating",
-        "Headlight restoration"
-      ]
+        "Preserve original factory finish",
+        "Cost-effective solutions",
+        "Quick turnaround time"
+      ],
+      process: [
+        "Dent assessment and technique selection",
+        "Access point identification",
+        "Gentle metal manipulation",
+        "Surface refinement",
+        "Quality inspection",
+        "Final detailing"
+      ],
+      image: "/images/services/dent-removal.jpg"
     }
   ]
 
@@ -104,7 +126,6 @@ export default function Services() {
       
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-gray-900 to-primary-950 pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1 
@@ -129,43 +150,84 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={container}
-            initial="hidden"
-            animate="show"
-          >
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={item}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
-              >
-                <div className="bg-gradient-to-br from-primary-500 to-primary-700 text-white p-4 rounded-xl w-16 h-16 mb-6 flex items-center justify-center">
+      {/* Detailed Service Sections */}
+      {mainServices.map((service, index) => (
+        <section 
+          key={service.id}
+          id={service.id}
+          className={`min-h-screen flex items-center ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+        >
+          <div className="container mx-auto px-4">
+            <motion.div 
+              className="grid md:grid-cols-12 gap-8 items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              {/* Image Section - Takes up 7 columns on desktop */}
+              <div className={`md:col-span-7 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent"></div>
+                </div>
+              </div>
+
+              {/* Content Section - Takes up 5 columns on desktop */}
+              <div className={`md:col-span-5 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                <div className="bg-gradient-to-br from-primary-500 to-primary-600 text-white p-3 rounded-xl w-14 h-14 mb-6 flex items-center justify-center shadow-lg">
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-display font-bold mb-4 text-gray-900">
+                
+                <h2 className="text-4xl font-display font-bold mb-4">
                   {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                </h2>
+                
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                   {service.description}
                 </p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-gray-700">
-                      <SparklesIcon className="w-5 h-5 text-primary-500 flex-shrink-0 mt-1" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+
+                <div className="space-y-8">
+                  {/* Key Features */}
+                  <div>
+                    <h3 className="text-xl font-display font-semibold mb-4 text-gray-900 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-sm">
+                        <CheckIcon className="w-5 h-5" />
+                      </span>
+                      Key Features
+                    </h3>
+                    <ul className="grid grid-cols-2 gap-3">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="text-gray-600">• {feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Process Steps */}
+                  <div>
+                    <h3 className="text-xl font-display font-semibold mb-4 text-gray-900 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-sm">
+                        <ArrowRightIcon className="w-5 h-5" />
+                      </span>
+                      Our Process
+                    </h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      {service.process.map((step, idx) => (
+                        <div key={idx} className="text-gray-600">
+                          {idx + 1}. {step}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      ))}
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-primary-900 to-primary-800 py-20">

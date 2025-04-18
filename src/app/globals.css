@@ -31,7 +31,7 @@
   .hero-section {
     position: relative;
     background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(3, 105, 161, 0.90)),
-                url('/images/hero-bg.webp');
+                url('/images/back3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,20 +60,6 @@
 
   .container {
     @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary-600/80 hover:bg-primary-700 transition-colors duration-200;
-    border-radius: 4px;
   }
 
   /* Gradient text animation */

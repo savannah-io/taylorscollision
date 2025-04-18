@@ -2,8 +2,9 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { StarIcon, WrenchIcon, ClockIcon, UserGroupIcon, ArrowRightIcon, ShieldCheckIcon, SparklesIcon } from '@heroicons/react/24/solid'
+import { StarIcon, WrenchIcon, ClockIcon, UserGroupIcon, ArrowRightIcon, ShieldCheckIcon, SparklesIcon, CheckIcon } from '@heroicons/react/24/solid'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export default function Home() {
   const container = {
@@ -26,13 +27,12 @@ export default function Home() {
       <Header />
       
       {/* Hero Section */}
-      <section className="hero-section min-h-[90vh] flex items-center relative pt-24 pb-28 bg-[url('/images/back1.webp')] bg-cover bg-center">
+      <section className="hero-section min-h-[90vh] flex items-center relative pt-24 pb-28 bg-[url('/images/back3.png')] bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-b from-primary-950/95 to-transparent pointer-events-none" style={{ height: '30%' }}></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"></div>
         
         {/* Tech pattern overlay */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-400/10 via-transparent to-transparent animate-pulse" style={{ backgroundSize: '4px 4px', backgroundRepeat: 'repeat' }}></div>
           <div className="absolute inset-0" 
             style={{ 
               backgroundImage: `
@@ -44,14 +44,6 @@ export default function Home() {
               `,
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat'
-            }}>
-          </div>
-          <div className="absolute inset-0" 
-            style={{ 
-              backgroundImage: 'radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 2px)', 
-              backgroundSize: '24px 24px',
-              backgroundPosition: '0 0',
-              animation: 'techBlips 8s linear infinite'
             }}>
           </div>
         </div>
@@ -136,83 +128,147 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-28 relative overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-blue-900">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/80 to-transparent"></div>
+      {/* Services Overview Section */}
+      <section className="py-28 relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50">
+        {/* Decorative background elements */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-primary-600/5 to-transparent"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-primary-500/10 via-blue-600/5 to-transparent"></div>
-        </div>
-        
-        <motion.div 
-          className="container mx-auto px-4 relative"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-20">
-            <motion.h2 
-              className="text-4xl md:text-5xl font-display font-bold mb-6 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Why Choose Us?
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Experience excellence in auto body repair with our comprehensive services and dedicated team
-            </motion.p>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary-100/40 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-100/40 via-transparent to-transparent"></div>
+          <div className="absolute w-full h-full">
+            <div className="absolute top-1/4 left-4 w-72 h-72 bg-primary-100/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+            <div className="absolute top-1/3 right-4 w-72 h-72 bg-blue-100/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+            <div className="absolute bottom-1/2 left-1/2 w-72 h-72 bg-sky-100/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        </div>
+
+        <div className="container mx-auto px-4 relative">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary-700 uppercase bg-primary-50 rounded-full shadow-sm">
+              Our Expertise
+            </span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+              Expert Auto Body{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800">
+                  Repair Services
+                </span>
+                <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-100/50 -rotate-1"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+              We specialize in comprehensive auto body repair services, from collision repair and dent removal to expert paint matching and structural repairs. Our certified technicians use state-of-the-art equipment to restore your vehicle to its pre-accident condition.
+            </p>
+            <motion.a 
+              href="/services" 
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/30 group relative overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              <span className="relative">Explore Our Services</span>
+              <ArrowRightIcon className="w-5 h-5 relative group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+          </motion.div>
+          
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {[
               {
-                icon: <StarIcon className="h-8 w-8" />,
-                title: "Expert Service",
-                description: "Professional auto body repair by certified technicians"
-              },
-              {
                 icon: <WrenchIcon className="h-8 w-8" />,
-                title: "Quality Work",
-                description: "State-of-the-art equipment and premium materials"
+                title: "Collision Repair",
+                description: "Expert repair of vehicle damage from accidents, restoring your car to pre-accident condition. Our certified technicians ensure quality repairs.",
+                color: "from-sky-500 to-blue-600",
+                bgGlow: "bg-sky-100/30",
+                features: ["Frame straightening", "Panel repair", "Structural repairs"],
+                id: "collision-repair"
               },
               {
-                icon: <ClockIcon className="h-8 w-8" />,
-                title: "Fast Service",
-                description: "Quick turnaround without compromising quality"
+                icon: <SparklesIcon className="h-8 w-8" />,
+                title: "Paint Services",
+                description: "Professional auto painting with computerized color matching for a flawless finish. We use premium materials for lasting results.",
+                color: "from-primary-500 to-primary-600",
+                bgGlow: "bg-primary-100/30",
+                features: ["Color matching", "Full painting", "Clear coating"],
+                id: "paint-services"
               },
               {
-                icon: <UserGroupIcon className="h-8 w-8" />,
-                title: "Customer First",
-                description: "Exceptional service and communication"
+                icon: <ShieldCheckIcon className="h-8 w-8" />,
+                title: "Dent Removal",
+                description: "Skilled dent removal services using advanced techniques to maintain your vehicle's finish. Fast and efficient repairs.",
+                color: "from-blue-500 to-primary-600",
+                bgGlow: "bg-blue-100/30",
+                features: ["Paintless repair", "Door dings", "Hail damage"],
+                id: "dent-removal"
               }
-            ].map((feature, index) => (
+            ].map((service, index) => (
               <motion.div 
                 key={index}
-                className="group backdrop-blur-sm bg-white/10 p-8 rounded-2xl hover:bg-white/15 transition-all duration-300 border border-white/10"
                 variants={item}
+                className="group relative h-full"
               >
-                <div className="bg-gradient-to-br from-blue-500 to-primary-600 text-white p-4 rounded-xl w-16 h-16 mb-6 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-primary-900/30">
-                  {feature.icon}
+                {/* Glow effect */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${service.bgGlow} blur-2xl`}></div>
+                
+                <div className="relative h-full bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100/80 group-hover:translate-y-[-4px] backdrop-blur-sm">
+                  <div className={`bg-gradient-to-br ${service.color} text-white p-4 rounded-xl w-16 h-16 mb-6 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg`}>
+                    {service.icon}
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-4 text-gray-900 group-hover:text-primary-600 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors mb-6">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-600 group-hover:text-gray-700">
+                        <CheckIcon className="w-5 h-5 text-primary-500 mr-2 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto flex items-center text-primary-600 font-medium group-hover:text-primary-700 transition-colors">
+                    <Link 
+                      href={`/services?section=${service.id}`}
+                      className="inline-flex items-center hover:gap-3 gap-2 transition-all"
+                    >
+                      <span>Learn more</span>
+                      <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="font-display font-bold mb-3 text-xl text-white group-hover:text-blue-200 transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-blue-100/80 group-hover:text-blue-100 transition-colors duration-300 leading-relaxed">
-                  {feature.description}
-                </p>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+
+        <style jsx>{`
+          @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+          }
+          .animate-blob {
+            animation: blob 7s infinite;
+          }
+          .animation-delay-2000 {
+            animation-delay: 2s;
+          }
+          .animation-delay-4000 {
+            animation-delay: 4s;
+          }
+        `}</style>
       </section>
 
       {/* Reviews Preview Section */}
@@ -292,6 +348,84 @@ export default function Home() {
             </a>
           </motion.div>
         </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-28 relative overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-blue-900">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/80 to-transparent"></div>
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-primary-600/5 to-transparent"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-primary-500/10 via-blue-600/5 to-transparent"></div>
+        </div>
+        
+        <motion.div 
+          className="container mx-auto px-4 relative"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-20">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-display font-bold mb-6 text-white"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Why Choose Us?
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Experience excellence in auto body repair with our comprehensive services and dedicated team
+            </motion.p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <StarIcon className="h-8 w-8" />,
+                title: "Expert Service",
+                description: "Professional auto body repair by certified technicians"
+              },
+              {
+                icon: <WrenchIcon className="h-8 w-8" />,
+                title: "Quality Work",
+                description: "State-of-the-art equipment and premium materials"
+              },
+              {
+                icon: <ClockIcon className="h-8 w-8" />,
+                title: "Fast Service",
+                description: "Quick turnaround without compromising quality"
+              },
+              {
+                icon: <UserGroupIcon className="h-8 w-8" />,
+                title: "Customer First",
+                description: "Exceptional service and communication"
+              }
+            ].map((feature, index) => (
+              <motion.div 
+                key={index}
+                className="group backdrop-blur-sm bg-white/10 p-8 rounded-2xl hover:bg-white/15 transition-all duration-300 border border-white/10"
+                variants={item}
+              >
+                <div className="bg-gradient-to-br from-blue-500 to-primary-600 text-white p-4 rounded-xl w-16 h-16 mb-6 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-primary-900/30">
+                  {feature.icon}
+                </div>
+                <h3 className="font-display font-bold mb-3 text-xl text-white group-hover:text-blue-200 transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-blue-100/80 group-hover:text-blue-100 transition-colors duration-300 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       <Footer />
