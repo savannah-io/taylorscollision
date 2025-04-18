@@ -58,7 +58,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Have questions about our services? Need an estimate? We're here to help.
+              Have questions about our services? Need an estimate? We&apos;re here to help.
               Contact us today and experience our exceptional customer service.
             </motion.p>
           </div>
