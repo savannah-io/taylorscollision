@@ -98,7 +98,7 @@ export default function Reviews() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              See what our customers are saying about their experience with Taylor's Collision.
+              See what our customers are saying about their experience with Taylor&apos;s Collision.
               We take pride in our work and customer satisfaction.
             </motion.p>
           </div>
@@ -159,7 +159,7 @@ export default function Reviews() {
                   </div>
                   <span className="text-sm text-gray-500">{review.date}</span>
                 </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">"{review.text}"</p>
+                <p className="text-gray-700 mb-6 leading-relaxed">&ldquo;{review.text}&rdquo;</p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
@@ -186,7 +186,7 @@ export default function Reviews() {
               Share Your Experience
             </h2>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Had a great experience with us? We'd love to hear about it! Your feedback helps us improve and lets others know about our service.
+              Had a great experience with us? We&apos;d love to hear about it! Your feedback helps us improve and lets others know about our service.
             </p>
             <a 
               href="https://g.page/r/your-google-review-link"

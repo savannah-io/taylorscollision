@@ -7,9 +7,8 @@ import {
   WrenchScrewdriverIcon, 
   SparklesIcon, 
   PaintBrushIcon, 
-  ShieldCheckIcon,
-  ExclamationTriangleIcon,
   SwatchIcon,
+  ExclamationTriangleIcon,
   WrenchIcon,
   BeakerIcon
 } from '@heroicons/react/24/outline'

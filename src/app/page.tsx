@@ -200,7 +200,7 @@ export default function Home() {
           >
             {[
               {
-                text: "Max and the team did an incredible job on my 2020 Mazda CX-30. I'm extremely happy with the results and would recommend them to everyone!",
+                text: "Max and the team did an incredible job on my 2020 Mazda CX-30. I&apos;m extremely happy with the results and would recommend them to everyone!",
                 author: "Jarrett B.",
                 rating: 5
               },
@@ -225,7 +225,7 @@ export default function Home() {
                     <StarIcon key={i} className="h-6 w-6" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 text-lg italic leading-relaxed">"{review.text}"</p>
+                <p className="text-gray-700 mb-6 text-lg italic leading-relaxed">&ldquo;{review.text}&rdquo;</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
                     {review.author[0]}
