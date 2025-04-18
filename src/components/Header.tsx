@@ -10,20 +10,28 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
+      setIsScrolled(window.scrollY > 20)
     }
 
+    handleScroll() // Check initial scroll position
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <header className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
+    <header className="w-full fixed top-0 left-0 right-0 z-50">
       {/* Top bar */}
-      <div className="bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white py-2.5">
-        <div className="container">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm">
+      <div 
+        className="bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white transition-all duration-300 ease-out"
+        style={{ 
+          height: isScrolled ? '0' : '40px',
+          opacity: isScrolled ? '0' : '1',
+          overflow: 'hidden'
+        }}
+      >
+        <div className="container mx-auto px-4 h-10">
+          <div className="h-full flex items-center justify-between">
+            <div className="flex items-center gap-8 text-sm">
               <motion.a 
                 href="tel:+17704950050" 
                 className="flex items-center gap-2 hover:text-primary-100 transition-colors"
@@ -37,7 +45,7 @@ const Header = () => {
                 href="https://goo.gl/maps/your-maps-link" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-2 hover:text-primary-100 transition-colors text-center sm:text-left"
+                className="flex items-center gap-2 hover:text-primary-100 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -45,8 +53,8 @@ const Header = () => {
                 <span className="font-medium tracking-wide">2785 Buford Hwy Ste 101-C, Duluth, GA 30096</span>
               </motion.a>
             </div>
-            <div className="hidden sm:block">
-              <span className="text-sm font-medium bg-primary-900/30 px-4 py-1.5 rounded-full tracking-wide">
+            <div className="hidden lg:block">
+              <span className="text-sm font-medium tracking-wide">
                 Mon-Fri: 8:30 AM - 6:00 PM
               </span>
             </div>
@@ -55,9 +63,16 @@ const Header = () => {
       </div>
 
       {/* Main navigation */}
-      <nav className={`py-4 transition-all duration-300 ${isScrolled ? 'border-b border-gray-100' : ''}`}>
-        <div className="container">
-          <div className="flex items-center justify-between">
+      <div 
+        className="w-full transition-all duration-300"
+        style={{
+          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(8px)' : 'none',
+          boxShadow: isScrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <nav className="h-16 flex items-center justify-between">
             <Link href="/" className="relative group">
               <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent transition-all duration-300 group-hover:from-primary-700 group-hover:to-primary-900">
                 Taylor&apos;s Collision
@@ -66,7 +81,7 @@ const Header = () => {
             </Link>
             
             <div className="hidden md:flex items-center gap-10">
-              {['Home', 'Services', 'Reviews', 'Contact', 'Blog'].map((item) => (
+              {['Home', 'Services', 'Reviews', 'Contact'].map((item) => (
                 <Link 
                   key={item}
                   href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
@@ -86,14 +101,14 @@ const Header = () => {
             >
               <Link 
                 href="/schedule" 
-                className="bg-primary-600 text-white px-6 py-2.5 rounded-md font-medium shadow-lg hover:bg-primary-700 transition-all duration-300 hover:shadow-xl"
+                className="inline-flex items-center justify-center bg-primary-600 text-white h-10 px-6 rounded-md font-medium shadow-lg hover:bg-primary-700 transition-all duration-300 hover:shadow-xl whitespace-nowrap"
               >
                 Schedule Now
               </Link>
             </motion.div>
-          </div>
+          </nav>
         </div>
-      </nav>
+      </div>
     </header>
   )
 }

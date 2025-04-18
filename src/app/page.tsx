@@ -26,13 +26,52 @@ export default function Home() {
       <Header />
       
       {/* Hero Section */}
-      <section className="hero-section min-h-[90vh] flex items-center relative pt-24 pb-28">
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-950/50 via-primary-900/40 to-sky-900/30 z-10"></div>
+      <section className="hero-section min-h-[90vh] flex items-center relative pt-24 pb-28 bg-[url('/images/back1.webp')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-950/95 to-transparent pointer-events-none" style={{ height: '30%' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"></div>
+        
+        {/* Tech pattern overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-400/10 via-transparent to-transparent animate-pulse" style={{ backgroundSize: '4px 4px', backgroundRepeat: 'repeat' }}></div>
+          <div className="absolute inset-0" 
+            style={{ 
+              backgroundImage: `
+                radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.15) 0%, transparent 8%),
+                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 6%),
+                radial-gradient(circle at 40% 70%, rgba(56, 189, 248, 0.15) 0%, transparent 12%),
+                radial-gradient(circle at 70% 50%, rgba(56, 189, 248, 0.15) 0%, transparent 10%),
+                linear-gradient(to bottom right, transparent 0%, transparent 100%)
+              `,
+              backgroundSize: '100% 100%',
+              backgroundRepeat: 'no-repeat'
+            }}>
+          </div>
+          <div className="absolute inset-0" 
+            style={{ 
+              backgroundImage: 'radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 2px)', 
+              backgroundSize: '24px 24px',
+              backgroundPosition: '0 0',
+              animation: 'techBlips 8s linear infinite'
+            }}>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes techBlips {
+            0% {
+              background-position: 0 0;
+            }
+            100% {
+              background-position: 24px 24px;
+            }
+          }
+        `}</style>
+
         <div className="container mx-auto px-4 relative z-20">
           <motion.div 
-            className="hero-content max-w-4xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="hero-content max-w-3xl"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
             <motion.div
@@ -41,23 +80,23 @@ export default function Home() {
               transition={{ delay: 0.3 }}
               className="mb-8 inline-block"
             >
-              <span className="bg-primary-500/20 text-primary-200 px-5 py-2.5 rounded-full text-sm font-semibold tracking-wider uppercase">
+              <span className="bg-primary-600/20 text-white px-5 py-2.5 rounded-full text-sm font-semibold tracking-wider uppercase shadow-lg backdrop-blur-sm">
                 Premier Auto Body Shop
               </span>
             </motion.div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold mb-8 leading-[1.1] text-white">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold mb-8 leading-[1.1] text-white drop-shadow-xl">
               Expert Auto Body Repair in{' '}
-              <span className="text-gradient animate-gradient">
+              <span className="text-primary-400 drop-shadow-xl">
                 Duluth, Georgia
               </span>
             </h1>
-            <p className="text-xl mb-12 text-gray-200 max-w-2xl leading-relaxed">
+            <p className="text-xl mb-12 text-gray-100 max-w-2xl leading-relaxed drop-shadow-lg font-medium">
               Quality collision repair with exceptional customer service. Get your car back to pre-accident condition with our skilled technicians.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <motion.a 
                 href="/schedule" 
-                className="btn btn-primary group"
+                className="btn btn-primary group shadow-xl hover:shadow-2xl bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 backdrop-blur-sm"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -66,7 +105,7 @@ export default function Home() {
               </motion.a>
               <motion.a 
                 href="/contact" 
-                className="btn btn-outline group"
+                className="btn btn-outline group border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl backdrop-blur-sm"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -75,21 +114,21 @@ export default function Home() {
               </motion.a>
             </div>
             <motion.div 
-              className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8"
+              className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
               {[
-                { icon: <ShieldCheckIcon className="w-6 h-6" />, text: "Lifetime Warranty" },
+                { icon: <ShieldCheckIcon className="w-6 h-6" />, text: "Free Estimates" },
                 { icon: <SparklesIcon className="w-6 h-6" />, text: "Expert Technicians" },
                 { icon: <ClockIcon className="w-6 h-6" />, text: "Quick Turnaround" }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 text-white/90">
-                  <div className="bg-primary-500/20 p-3 rounded-xl">
+                <div key={index} className="flex items-center gap-4 text-white bg-black/20 backdrop-blur-sm p-4 rounded-xl border border-white/10 shadow-lg">
+                  <div className="bg-primary-500/30 p-3 rounded-xl shadow-lg">
                     {item.icon}
                   </div>
-                  <span className="font-medium tracking-wide">{item.text}</span>
+                  <span className="font-medium tracking-wide drop-shadow-lg">{item.text}</span>
                 </div>
               ))}
             </motion.div>

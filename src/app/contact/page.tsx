@@ -39,8 +39,12 @@ export default function Contact() {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-gray-900 to-primary-950 pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
+      <section className="bg-gradient-to-br from-gray-900 via-primary-900 to-primary-800 pt-32 pb-20 relative overflow-hidden">
+        {/* Modern decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary-400/10 via-primary-600/5 to-transparent"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/10 via-primary-600/5 to-transparent"></div>
+        </div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1 
@@ -50,7 +54,7 @@ export default function Contact() {
               transition={{ duration: 0.5 }}
             >
               Get in{' '}
-              <span className="text-gradient animate-gradient">Touch</span>
+              <span className="text-gradient bg-gradient-to-r from-blue-400 to-primary-400 animate-gradient">Touch</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-gray-300 mb-8 leading-relaxed"
@@ -66,7 +70,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}

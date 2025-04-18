@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   title: "Taylor's Collision - Premier Auto Body Shop in Duluth, GA",
   description: 'Expert collision repair and auto body services in Duluth, Georgia. Quality work, fair prices, and exceptional customer service.',
   keywords: 'auto body shop, collision repair, car repair, Duluth, Georgia, Taylor\'s Collision',
+  icons: {
+    icon: [
+      {
+        url: '/favi.svg',
+        type: 'image/svg+xml',
+      }
+    ]
+  }
 }
 
 export default function RootLayout({
